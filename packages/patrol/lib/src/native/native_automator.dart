@@ -631,6 +631,23 @@ class NativeAutomator {
   ///
   /// Throws if no permission request dialog is present.
   ///
+  /// On iOS, this method works only when device language is set to English.
+  /// This is because there's no way to reference views on iOS other than by the
+  /// text, which is localized. If you want to handle a permission request
+  /// dialog on iOS device with language other than English, you have to use
+  /// [tap], for example:
+  ///
+  /// ```dart
+  /// // Accept native permission request dialog in Polish
+  /// await $.native.tap(
+  ///   Selector(text: 'Pozwalaj'),
+  ///   appId: 'com.apple.springboard',
+  /// );
+  /// ```
+  ///
+  /// The native permission request dialogs are owned by the iOS-provided
+  /// SpringBoard app, which has bundle identifier "com.apple.springboard".
+  ///
   /// See also:
   ///
   ///  * [grantPermissionOnlyThisTime] and [denyPermission]
@@ -656,6 +673,23 @@ class NativeAutomator {
   /// On iOS, this is the same as [grantPermissionWhenInUse] except for the
   /// location permission.
   ///
+  /// On iOS, this method works only when device language is set to English.
+  /// This is because there's no way to reference views on iOS other than by the
+  /// text, which is localized. If you want to handle a permission request
+  /// dialog on iOS device with language other than English, you have to use
+  /// [tap], for example:
+  ///
+  /// ```dart
+  /// // Accept native permission request dialog in Polish
+  /// await $.native.tap(
+  ///   Selector(text: 'Pozwalaj'),
+  ///   appId: 'com.apple.springboard',
+  /// );
+  /// ```
+  ///
+  /// The native permission request dialogs are owned by the iOS-provided
+  /// SpringBoard app, which has bundle identifier "com.apple.springboard".
+  ///
   /// See also:
   ///
   ///  * [grantPermissionWhenInUse] and [denyPermission]
@@ -679,6 +713,23 @@ class NativeAutomator {
   /// dialog is asking for.
   ///
   /// Throws if no permission request dialog is present.
+  ///
+  /// On iOS, this method works only when device language is set to English.
+  /// This is because there's no way to reference views on iOS other than by the
+  /// text, which is localized. If you want to handle a permission request
+  /// dialog on iOS device with language other than English, you have to use
+  /// [tap], for example:
+  ///
+  /// ```dart
+  /// // Deny native permission request dialog in Polish
+  /// await $.native.tap(
+  ///   Selector(text: 'Odmów'),
+  ///   appId: 'com.apple.springboard',
+  /// );
+  /// ```
+  ///
+  /// The native permission request dialogs are owned by the iOS-provided
+  /// SpringBoard app, which has bundle identifier "com.apple.springboard".
   ///
   /// See also:
   ///
