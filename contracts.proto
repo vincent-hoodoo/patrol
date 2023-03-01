@@ -63,6 +63,7 @@ message TapOnNotificationRequest {
     uint32 index = 1;
     Selector selector = 2;
   }
+  optional string appName = 3;
 }
 
 // We're defining our own Empty instead of using google.protobuf.Empty because
@@ -79,7 +80,9 @@ message DarkModeRequest { string appId = 1; }
 message GetNativeViewsRequest { Selector selector = 1; }
 message GetNativeViewsResponse { repeated NativeView nativeViews = 2;}
 
-message GetNotificationsRequest {}
+message GetNotificationsRequest {
+  optional string appName = 1;
+}
 message GetNotificationsResponse { repeated Notification notifications = 2; }
 
 message TapRequest {

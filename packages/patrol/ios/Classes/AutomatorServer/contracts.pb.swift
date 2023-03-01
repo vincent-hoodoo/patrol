@@ -67,6 +67,15 @@ public struct Patrol_TapOnNotificationRequest {
     set {findBy = .selector(newValue)}
   }
 
+  public var appName: String {
+    get {return _appName ?? String()}
+    set {_appName = newValue}
+  }
+  /// Returns true if `appName` has been explicitly set.
+  public var hasAppName: Bool {return self._appName != nil}
+  /// Clears the value of `appName`. Subsequent reads from it will return its default value.
+  public mutating func clearAppName() {self._appName = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_FindBy: Equatable {
@@ -94,6 +103,8 @@ public struct Patrol_TapOnNotificationRequest {
   }
 
   public init() {}
+
+  fileprivate var _appName: String? = nil
 }
 
 /// We're defining our own Empty instead of using google.protobuf.Empty because
@@ -171,9 +182,20 @@ public struct Patrol_GetNotificationsRequest {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  public var appName: String {
+    get {return _appName ?? String()}
+    set {_appName = newValue}
+  }
+  /// Returns true if `appName` has been explicitly set.
+  public var hasAppName: Bool {return self._appName != nil}
+  /// Clears the value of `appName`. Subsequent reads from it will return its default value.
+  public mutating func clearAppName() {self._appName = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
+
+  fileprivate var _appName: String? = nil
 }
 
 public struct Patrol_GetNotificationsResponse {
@@ -724,6 +746,7 @@ extension Patrol_TapOnNotificationRequest: SwiftProtobuf.Message, SwiftProtobuf.
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "index"),
     2: .same(proto: "selector"),
+    3: .same(proto: "appName"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -753,6 +776,7 @@ extension Patrol_TapOnNotificationRequest: SwiftProtobuf.Message, SwiftProtobuf.
           self.findBy = .selector(v)
         }
       }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._appName) }()
       default: break
       }
     }
@@ -774,11 +798,15 @@ extension Patrol_TapOnNotificationRequest: SwiftProtobuf.Message, SwiftProtobuf.
     }()
     case nil: break
     }
+    try { if let v = self._appName {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Patrol_TapOnNotificationRequest, rhs: Patrol_TapOnNotificationRequest) -> Bool {
     if lhs.findBy != rhs.findBy {return false}
+    if lhs._appName != rhs._appName {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -924,18 +952,35 @@ extension Patrol_GetNativeViewsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
 
 extension Patrol_GetNotificationsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetNotificationsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "appName"),
+  ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let _ = try decoder.nextFieldNumber() {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self._appName) }()
+      default: break
+      }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._appName {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Patrol_GetNotificationsRequest, rhs: Patrol_GetNotificationsRequest) -> Bool {
+    if lhs._appName != rhs._appName {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -292,7 +292,6 @@ class Automator private constructor() {
 
         val notifications = mutableListOf<Contracts.Notification>()
         for (notificationContainer in notificationContainers) {
-
             val notification = notification {
                 val appName = notificationContainer.findObject(By.res("android:id/app_name_text"))?.text
                 if (appName != null) {

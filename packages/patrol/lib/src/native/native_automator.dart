@@ -187,6 +187,17 @@ class NativeAutomator {
     throw StateError('unsupported platform');
   }
 
+  /// Returns the platform-dependent name of the app under test.
+  String get resolvedAppName {
+    if (io.Platform.isAndroid) {
+      return _config.androidAppName;
+    } else if (io.Platform.isIOS) {
+      return _config.iosAppName;
+    }
+
+    throw StateError('unsupported platform');
+  }
+
   Future<T> _wrapRequest<T>(String name, Future<T> Function() request) async {
     _config.logger('$name() started');
     try {
@@ -333,7 +344,7 @@ class NativeAutomator {
   /// Returns the first, topmost visible notification.
   ///
   /// Notification shade has to be opened with [openNotifications].
-  Future<Notification> getFirstNotification() async {
+  Future<Notification> getFirstNotification({String? appId}) async {
     final response = await _wrapRequest(
       'getFirstNotification',
       () => _client.getNotifications(
@@ -368,35 +379,53 @@ class NativeAutomator {
     );
   }
 
-  /// Taps on the [index]-th visible notification.
+  /// Taps on the [index]-th visible notification from app [appName].
   ///
   /// Notification shade has to be opened first with [openNotifications].
+  ///
+  /// If [appName] is null, the [resolvedAppName] is used. If it's also null,
+  /// then the first notification is tapped, no matter what app it comes from.
   ///
   /// See also:
   ///
   ///  * [tapOnNotificationBySelector], which allows for more precise
   ///    specification of the notification to tap on
-  Future<void> tapOnNotificationByIndex(int index) async {
+  Future<void> tapOnNotificationByIndex(int index, {String? appName}) async {
     await _wrapRequest(
       'tapOnNotificationByIndex',
-      () => _client.tapOnNotification(TapOnNotificationRequest(index: index)),
+      () => _client.tapOnNotification(
+        TapOnNotificationRequest(
+          index: index,
+          appName: appName ?? resolvedAppName,
+        ),
+      ),
     );
   }
 
-  /// Taps on the visible notification using [selector].
+  /// Taps on the visible notification using [selector] from app [appName].
   ///
   /// Notification shade has to be opened first with [openNotifications].
   ///
+  /// If [appName] is null, the [resolvedAppName] is used. If it's also null,
+  /// then the first notification is tapped, no matter what app it comes from.
+  ///
   /// On iOS, only [Selector.textContains] is taken into account.
+  ///
   ///
   /// See also:
   ///
   /// * [tapOnNotificationByIndex], which is less flexible but also less verbose
-  Future<void> tapOnNotificationBySelector(Selector selector) async {
+  Future<void> tapOnNotificationBySelector(
+    Selector selector, {
+    String? appName,
+  }) async {
     await _wrapRequest(
       'tapOnNotificationBySelector',
       () => _client.tapOnNotification(
-        TapOnNotificationRequest(selector: selector),
+        TapOnNotificationRequest(
+          selector: selector,
+          appName: appName ?? resolvedAppName,
+        ),
       ),
     );
   }

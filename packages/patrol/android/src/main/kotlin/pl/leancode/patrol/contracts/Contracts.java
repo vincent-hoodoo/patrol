@@ -569,6 +569,23 @@ public final class Contracts {
      */
     pl.leancode.patrol.contracts.Contracts.Selector getSelector();
 
+    /**
+     * <code>optional string appName = 3;</code>
+     * @return Whether the appName field is set.
+     */
+    boolean hasAppName();
+    /**
+     * <code>optional string appName = 3;</code>
+     * @return The appName.
+     */
+    java.lang.String getAppName();
+    /**
+     * <code>optional string appName = 3;</code>
+     * @return The bytes for appName.
+     */
+    com.google.protobuf.ByteString
+        getAppNameBytes();
+
     public pl.leancode.patrol.contracts.Contracts.TapOnNotificationRequest.FindByCase getFindByCase();
   }
   /**
@@ -580,7 +597,9 @@ public final class Contracts {
       // @@protoc_insertion_point(message_implements:patrol.TapOnNotificationRequest)
       TapOnNotificationRequestOrBuilder {
     private TapOnNotificationRequest() {
+      appName_ = "";
     }
+    private int bitField0_;
     private int findByCase_ = 0;
     private java.lang.Object findBy_;
     public enum FindByCase {
@@ -710,6 +729,61 @@ public final class Contracts {
         findByCase_ = 0;
         findBy_ = null;
       }
+    }
+
+    public static final int APPNAME_FIELD_NUMBER = 3;
+    private java.lang.String appName_;
+    /**
+     * <code>optional string appName = 3;</code>
+     * @return Whether the appName field is set.
+     */
+    @java.lang.Override
+    public boolean hasAppName() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional string appName = 3;</code>
+     * @return The appName.
+     */
+    @java.lang.Override
+    public java.lang.String getAppName() {
+      return appName_;
+    }
+    /**
+     * <code>optional string appName = 3;</code>
+     * @return The bytes for appName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAppNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(appName_);
+    }
+    /**
+     * <code>optional string appName = 3;</code>
+     * @param value The appName to set.
+     */
+    private void setAppName(
+        java.lang.String value) {
+      java.lang.Class<?> valueClass = value.getClass();
+  bitField0_ |= 0x00000001;
+      appName_ = value;
+    }
+    /**
+     * <code>optional string appName = 3;</code>
+     */
+    private void clearAppName() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      appName_ = getDefaultInstance().getAppName();
+    }
+    /**
+     * <code>optional string appName = 3;</code>
+     * @param value The bytes for appName to set.
+     */
+    private void setAppNameBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      appName_ = value.toStringUtf8();
+      bitField0_ |= 0x00000001;
     }
 
     public static pl.leancode.patrol.contracts.Contracts.TapOnNotificationRequest parseFrom(
@@ -903,6 +977,63 @@ public final class Contracts {
         return this;
       }
 
+      /**
+       * <code>optional string appName = 3;</code>
+       * @return Whether the appName field is set.
+       */
+      @java.lang.Override
+      public boolean hasAppName() {
+        return instance.hasAppName();
+      }
+      /**
+       * <code>optional string appName = 3;</code>
+       * @return The appName.
+       */
+      @java.lang.Override
+      public java.lang.String getAppName() {
+        return instance.getAppName();
+      }
+      /**
+       * <code>optional string appName = 3;</code>
+       * @return The bytes for appName.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getAppNameBytes() {
+        return instance.getAppNameBytes();
+      }
+      /**
+       * <code>optional string appName = 3;</code>
+       * @param value The appName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setAppName(value);
+        return this;
+      }
+      /**
+       * <code>optional string appName = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAppName() {
+        copyOnWrite();
+        instance.clearAppName();
+        return this;
+      }
+      /**
+       * <code>optional string appName = 3;</code>
+       * @param value The bytes for appName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setAppNameBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:patrol.TapOnNotificationRequest)
     }
     @java.lang.Override
@@ -921,11 +1052,13 @@ public final class Contracts {
             java.lang.Object[] objects = new java.lang.Object[] {
               "findBy_",
               "findByCase_",
+              "bitField0_",
               pl.leancode.patrol.contracts.Contracts.Selector.class,
+              "appName_",
             };
             java.lang.String info =
-                "\u0000\u0002\u0001\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001>\u0000\u0002<" +
-                "\u0000";
+                "\u0000\u0003\u0001\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001>\u0000\u0002<" +
+                "\u0000\u0003\u1208\u0000";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -2331,6 +2464,23 @@ public final class Contracts {
   public interface GetNotificationsRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:patrol.GetNotificationsRequest)
       com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional string appName = 1;</code>
+     * @return Whether the appName field is set.
+     */
+    boolean hasAppName();
+    /**
+     * <code>optional string appName = 1;</code>
+     * @return The appName.
+     */
+    java.lang.String getAppName();
+    /**
+     * <code>optional string appName = 1;</code>
+     * @return The bytes for appName.
+     */
+    com.google.protobuf.ByteString
+        getAppNameBytes();
   }
   /**
    * Protobuf type {@code patrol.GetNotificationsRequest}
@@ -2341,7 +2491,64 @@ public final class Contracts {
       // @@protoc_insertion_point(message_implements:patrol.GetNotificationsRequest)
       GetNotificationsRequestOrBuilder {
     private GetNotificationsRequest() {
+      appName_ = "";
     }
+    private int bitField0_;
+    public static final int APPNAME_FIELD_NUMBER = 1;
+    private java.lang.String appName_;
+    /**
+     * <code>optional string appName = 1;</code>
+     * @return Whether the appName field is set.
+     */
+    @java.lang.Override
+    public boolean hasAppName() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional string appName = 1;</code>
+     * @return The appName.
+     */
+    @java.lang.Override
+    public java.lang.String getAppName() {
+      return appName_;
+    }
+    /**
+     * <code>optional string appName = 1;</code>
+     * @return The bytes for appName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAppNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(appName_);
+    }
+    /**
+     * <code>optional string appName = 1;</code>
+     * @param value The appName to set.
+     */
+    private void setAppName(
+        java.lang.String value) {
+      java.lang.Class<?> valueClass = value.getClass();
+  bitField0_ |= 0x00000001;
+      appName_ = value;
+    }
+    /**
+     * <code>optional string appName = 1;</code>
+     */
+    private void clearAppName() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      appName_ = getDefaultInstance().getAppName();
+    }
+    /**
+     * <code>optional string appName = 1;</code>
+     * @param value The bytes for appName to set.
+     */
+    private void setAppNameBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      appName_ = value.toStringUtf8();
+      bitField0_ |= 0x00000001;
+    }
+
     public static pl.leancode.patrol.contracts.Contracts.GetNotificationsRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2437,6 +2644,63 @@ public final class Contracts {
       }
 
 
+      /**
+       * <code>optional string appName = 1;</code>
+       * @return Whether the appName field is set.
+       */
+      @java.lang.Override
+      public boolean hasAppName() {
+        return instance.hasAppName();
+      }
+      /**
+       * <code>optional string appName = 1;</code>
+       * @return The appName.
+       */
+      @java.lang.Override
+      public java.lang.String getAppName() {
+        return instance.getAppName();
+      }
+      /**
+       * <code>optional string appName = 1;</code>
+       * @return The bytes for appName.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getAppNameBytes() {
+        return instance.getAppNameBytes();
+      }
+      /**
+       * <code>optional string appName = 1;</code>
+       * @param value The appName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setAppName(value);
+        return this;
+      }
+      /**
+       * <code>optional string appName = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAppName() {
+        copyOnWrite();
+        instance.clearAppName();
+        return this;
+      }
+      /**
+       * <code>optional string appName = 1;</code>
+       * @param value The bytes for appName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setAppNameBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:patrol.GetNotificationsRequest)
     }
     @java.lang.Override
@@ -2452,8 +2716,12 @@ public final class Contracts {
           return new Builder();
         }
         case BUILD_MESSAGE_INFO: {
-            java.lang.Object[] objects = null;java.lang.String info =
-                "\u0000\u0000";
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "bitField0_",
+              "appName_",
+            };
+            java.lang.String info =
+                "\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u1208\u0000";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

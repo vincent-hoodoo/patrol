@@ -69,6 +69,30 @@ public object TapOnNotificationRequestKt {
     public fun hasSelector(): kotlin.Boolean {
       return _builder.hasSelector()
     }
+
+    /**
+     * <code>optional string appName = 3;</code>
+     */
+    public var appName: kotlin.String
+      @JvmName("getAppName")
+      get() = _builder.getAppName()
+      @JvmName("setAppName")
+      set(value) {
+        _builder.setAppName(value)
+      }
+    /**
+     * <code>optional string appName = 3;</code>
+     */
+    public fun clearAppName() {
+      _builder.clearAppName()
+    }
+    /**
+     * <code>optional string appName = 3;</code>
+     * @return Whether the appName field is set.
+     */
+    public fun hasAppName(): kotlin.Boolean {
+      return _builder.hasAppName()
+    }
     public val findByCase: pl.leancode.patrol.contracts.Contracts.TapOnNotificationRequest.FindByCase
       @JvmName("getFindByCase")
       get() = _builder.getFindByCase()

@@ -18,6 +18,13 @@ void main() {
       // wait for notification to show up
       await Future<void>.delayed(const Duration(seconds: 5));
 
+      final notifications = await $.native.getNotifications();
+      for (final notification in notifications) {
+        print(
+          'Notification from ${notification.appName}: ${notification.title}',
+        );
+      }
+
       await $.native.tapOnNotificationBySelector(
         Selector(textContains: 'Someone liked'),
       );
